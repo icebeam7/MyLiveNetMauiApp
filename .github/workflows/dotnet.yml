@@ -37,5 +37,8 @@ jobs:
         path: |
           ./**/*.aab
           ./**/*.apk
-        
-
+    - name: Setup App Center CLI
+      run: npm install -g appcenter-cli
+    - name: Upload Android app to App Center
+      run: | 
+        appcenter distribute release --file ./MyLiveNetMauiApp\MyLiveNetMauiApp\bin\Release\net7.0-android\com.companyname.mylivenetmauiapp-Signed.apk --app icebeam/My-Live-Net-Maui-App --group Collaborators --token ${{ secrets.APP_CENTER_TOKEN }}
